@@ -11,7 +11,6 @@
         .then((data) => new Intl.NumberFormat().format(data.count.replace(/\D/g, '')));
     };
 
-    // Single post page pageviews
     const pv = document.getElementById('pageviews');
     if (pv !== null) {
       fetchCount(location.pathname)
@@ -19,10 +18,9 @@
         .catch(() => { pv.innerText = '1'; });
     }
 
-    // Post-list page pageviews (one entry per post card)
-    // Jekyll already percent-encodes post.url, so decode it back to a raw
-    // path first -- otherwise fetchCount's encodeURIComponent would double-encode it
-    // and never match what GoatCounter recorded for the page.
+    /* post.url is already percent-encoded by Jekyll, so decode it back to a raw
+       path before handing it to fetchCount -- otherwise encodeURIComponent would
+       double-encode it and never match what GoatCounter recorded for the page. */
     document.querySelectorAll('.pageviews-list[data-path]').forEach((elem) => {
       fetchCount(decodeURIComponent(elem.dataset.path))
         .then((formatted) => { elem.innerText = formatted; })
