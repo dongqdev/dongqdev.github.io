@@ -4,18 +4,31 @@
     const goatcounterId = '{{ site.analytics.goatcounter.id }}';
 
     const fetchCount = (path) => {
-      const uri = path.replace(/\/$/, '');
-      const url = `https://${goatcounterId}.goatcounter.com/counter/${encodeURIComponent(uri)}.json`;
-      return fetch(url)
-        .then((response) => response.json())
-        .then((data) => new Intl.NumberFormat().format(data.count.replace(/\D/g, '')));
+      let cleanPath = path;
+      if (cleanPath.length > 1 && cleanPath.endsWith('/')) {
+        cleanPath = cleanPath.slice(0, -1);
+      }
+
+      const url = `https://${goatcounterId}.goatcounter.com/counter/${encodeURIComponent(cleanPath)}.json?_t=${Date.now()}`;
+      return fetch(url, { cache: 'no-cache' })
+        .then((response) => {
+          if (!response.ok) throw new Error('Failed to fetch count');
+          return response.json();
+        })
+        .then((data) => {
+          if (!data || data.count === undefined || data.count === null) {
+            return '0';
+          }
+          const rawCount = String(data.count).replace(/\D/g, '');
+          return new Intl.NumberFormat().format(rawCount || 0);
+        });
     };
 
     const pv = document.getElementById('pageviews');
     if (pv !== null) {
       fetchCount(location.pathname)
         .then((formatted) => { pv.innerText = formatted; })
-        .catch(() => { pv.innerText = '1'; });
+        .catch(() => { pv.innerText = '0'; });
     }
 
     /* post.url is already percent-encoded by Jekyll, so decode it back to a raw
@@ -24,7 +37,7 @@
     document.querySelectorAll('.pageviews-list[data-path]').forEach((elem) => {
       fetchCount(decodeURIComponent(elem.dataset.path))
         .then((formatted) => { elem.innerText = formatted; })
-        .catch(() => { elem.innerText = '1'; });
+        .catch(() => { elem.innerText = '0'; });
     });
   });
 </script>
