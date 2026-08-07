@@ -20,8 +20,11 @@
     }
 
     // Post-list page pageviews (one entry per post card)
+    // Jekyll already percent-encodes post.url, so decode it back to a raw
+    // path first -- otherwise fetchCount's encodeURIComponent would double-encode it
+    // and never match what GoatCounter recorded for the page.
     document.querySelectorAll('.pageviews-list[data-path]').forEach((elem) => {
-      fetchCount(elem.dataset.path)
+      fetchCount(decodeURIComponent(elem.dataset.path))
         .then((formatted) => { elem.innerText = formatted; })
         .catch(() => { elem.innerText = '1'; });
     });
