@@ -1,0 +1,29 @@
+<!-- Display GoatCounter pageviews -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const goatcounterId = '{{ site.analytics.goatcounter.id }}';
+
+    const fetchCount = (path) => {
+      const uri = path.replace(/\/$/, '');
+      const url = `https://${goatcounterId}.goatcounter.com/counter/${encodeURIComponent(uri)}.json`;
+      return fetch(url)
+        .then((response) => response.json())
+        .then((data) => new Intl.NumberFormat().format(data.count.replace(/\D/g, '')));
+    };
+
+    // Single post page pageviews
+    const pv = document.getElementById('pageviews');
+    if (pv !== null) {
+      fetchCount(location.pathname)
+        .then((formatted) => { pv.innerText = formatted; })
+        .catch(() => { pv.innerText = '1'; });
+    }
+
+    // Post-list page pageviews (one entry per post card)
+    document.querySelectorAll('.pageviews-list[data-path]').forEach((elem) => {
+      fetchCount(elem.dataset.path)
+        .then((formatted) => { elem.innerText = formatted; })
+        .catch(() => { elem.innerText = '1'; });
+    });
+  });
+</script>
