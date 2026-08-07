@@ -3,8 +3,13 @@
   document.addEventListener('DOMContentLoaded', () => {
     const goatcounterId = '{{ site.analytics.goatcounter.id }}';
 
+    /* Always decode first, then encode once. Jekyll's post.url and the browser's
+       location.pathname can both arrive pre-percent-encoded, and re-encoding an
+       already-encoded path produces a path GoatCounter never recorded, so the
+       count silently stays at 0. NOTE: this file is squashed onto a single line
+       by compress_html, so only block comments are safe here -- a `//` line
+       comment would swallow every line after it and break the whole script. */
     const fetchCount = (path) => {
-      // Decode first to prevent double-encoding (%25EC...), then encode properly
       let rawPath = decodeURIComponent(path);
       if (rawPath.length > 1 && rawPath.endsWith('/')) {
         rawPath = rawPath.slice(0, -1);
@@ -31,5 +36,11 @@
         .then((formatted) => { pv.innerText = formatted; })
         .catch(() => { pv.innerText = '1'; });
     }
+
+    document.querySelectorAll('.pageviews-list[data-path]').forEach((elem) => {
+      fetchCount(elem.dataset.path)
+        .then((formatted) => { elem.innerText = formatted; })
+        .catch(() => { elem.innerText = '1'; });
+    });
   });
 </script>
