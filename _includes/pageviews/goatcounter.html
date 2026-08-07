@@ -4,12 +4,13 @@
     const goatcounterId = '{{ site.analytics.goatcounter.id }}';
 
     const fetchCount = (path) => {
-      let cleanPath = path;
-      if (cleanPath.length > 1 && cleanPath.endsWith('/')) {
-        cleanPath = cleanPath.slice(0, -1);
+      // Decode first to prevent double-encoding (%25EC...), then encode properly
+      let rawPath = decodeURIComponent(path);
+      if (rawPath.length > 1 && rawPath.endsWith('/')) {
+        rawPath = rawPath.slice(0, -1);
       }
 
-      const url = `https://${goatcounterId}.goatcounter.com/counter/${encodeURIComponent(cleanPath)}.json?_t=${Date.now()}`;
+      const url = `https://${goatcounterId}.goatcounter.com/counter/${encodeURIComponent(rawPath)}.json?_t=${Date.now()}`;
       return fetch(url, { cache: 'no-cache' })
         .then((response) => {
           if (!response.ok) throw new Error('Failed to fetch count');
@@ -17,10 +18,10 @@
         })
         .then((data) => {
           if (!data || data.count === undefined || data.count === null) {
-            return '0';
+            return '1';
           }
           const rawCount = String(data.count).replace(/\D/g, '');
-          return new Intl.NumberFormat().format(rawCount || 0);
+          return new Intl.NumberFormat().format(rawCount || 1);
         });
     };
 
@@ -28,16 +29,7 @@
     if (pv !== null) {
       fetchCount(location.pathname)
         .then((formatted) => { pv.innerText = formatted; })
-        .catch(() => { pv.innerText = '0'; });
+        .catch(() => { pv.innerText = '1'; });
     }
-
-    /* post.url is already percent-encoded by Jekyll, so decode it back to a raw
-       path before handing it to fetchCount -- otherwise encodeURIComponent would
-       double-encode it and never match what GoatCounter recorded for the page. */
-    document.querySelectorAll('.pageviews-list[data-path]').forEach((elem) => {
-      fetchCount(decodeURIComponent(elem.dataset.path))
-        .then((formatted) => { elem.innerText = formatted; })
-        .catch(() => { elem.innerText = '0'; });
-    });
   });
 </script>
