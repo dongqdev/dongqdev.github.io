@@ -17,7 +17,7 @@ image:
 @Metadata.layer: #CUSTOMER
 -- [필수 어노테이션] 이 UI 설정이 적용되는 개발 레이어(계층)를 정의합니
 ```
-<table header-row="true">
+<table header-row="true" markdown="1">
 <colgroup>
 <col>
 <col width="517">

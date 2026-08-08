@@ -13,7 +13,7 @@ SAP RAP(RESTful ABAP Programming Model)에서 CDS View를 구축할 때 데이�
 ## 2. SQL Join 종류 및 특징
 RAP의 CDS View 내에서도 표준 SQL Join을 그대로 사용할 수 있습니다.
 ### 📊 Join 종류별 비교 테이블
-<table>
+<table markdown="1">
 <tr>
 <td>**Join 종류**</td>
 <td>**노션 아이콘**</td>
@@ -63,7 +63,7 @@ define view entity ZI_OrderHeader
 ```
 ## 4. [핵심 비교] Join vs Association
 노션에서 한눈에 비교할 수 있는 종합 대조표입니다.
-<table header-row="true" header-column="true">
+<table header-row="true" header-column="true" markdown="1">
 <tr>
 <td>**비교 항목**</td>
 <td>**SQL Join (Inner / Left Outer)**</td>

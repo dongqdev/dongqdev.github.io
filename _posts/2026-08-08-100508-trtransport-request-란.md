@@ -14,7 +14,7 @@ tags: ["SAP", "개발WIKI"]
 
 ## 2. Git 브랜치 vs SAP TR 차이점
 웹 개발 경험과 비교해보면 TR의 특성을 더 쉽게 이해할 수 있습니다.
-<table header-row="true" header-column="true">
+<table header-row="true" header-column="true" markdown="1">
 <tr>
 <td>**비교 항목**</td>
 <td>**Git (웹 개발)**</td>

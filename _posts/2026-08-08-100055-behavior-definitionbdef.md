@@ -78,7 +78,7 @@ authorization master( global )
 
 > ## 1. ETag Master vs Lock Master 개념 비교
 > 두 기능의 핵심적인 차이점을 한눈에 파악할 수 있도록 노션(Notion)에 붙여넣기 좋은 표 형식으로 정리해 드립니다.
-> <table header-row="true" header-column="true">
+> <table header-row="true" header-column="true" markdown="1">
 > <tr>
 > <td>**비교 항목**</td>
 > <td>**ETag Master (낙관적 동시제어)**</td>
@@ -134,7 +134,7 @@ authorization master( global )
 
 #### authorization 상세 내용
 
-> <table header-row="true" header-column="true">
+> <table header-row="true" header-column="true" markdown="1">
 > <colgroup>
 > <col width="74">
 > <col width="246">

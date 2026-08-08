@@ -8,7 +8,7 @@ tags: ["SAP", "RAP"]
 ---
 # 1. `I_PRODNROUTINGOPSUBORDOPDEX` 상세 해부
 이 객체는 SAP S/4HANA (2023 SPS04 이상 버전) PP(생산관리) 모듈의 표준 CDS 뷰로, 명칭은 다음과 같이 결합하여 구성된 형식입니다.
-<table header-row="true">
+<table header-row="true" markdown="1">
 <tr>
 <td>약어</td>
 <td>풀네임 (Full Name)</td>
@@ -100,7 +100,7 @@ graph TD
 ---
 # 3. SAP CDS View 명명 규칙 가이드
 ## 📌 1. 대표적인 접두사 (Prefix) 규칙.
-<table header-row="true">
+<table header-row="true" markdown="1">
 <tr>
 <td>접두사</td>
 <td>정식 명칭</td>
@@ -147,7 +147,7 @@ graph TD
 ---
 ## 📌 2. 대표적인 접미사 (Suffix) 규칙
 CDS 뷰에 특수한 비즈니스 기능(Value Help, 트랜잭션, 데이터 분석 등)을 부여할 때 이름 끝에 붙이는 규칙입니다.
-<table header-row="true">
+<table header-row="true" markdown="1">
 <colgroup>
 <col width="137.34375">
 <col width="123.65625">
