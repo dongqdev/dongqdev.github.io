@@ -8,10 +8,10 @@ image:
 ---
 
 ## 1. 확인 창을 위한 Data definition 정의
->
 
-- **New > Data Definition**
-- **Name : ZC_TWBS_RESET_CONFIRM**
+
+-**New > Data Definition**
+-**Name : ZC_TWBS_RESET_CONFIRM**
 
 ### 소스코드
 ```abap
@@ -31,7 +31,7 @@ define abstract entity ZC_TWBS_RESET_CONFIRM
 // 변경: 뒤에 parameter 키워드와 함께 1단계에서 만든 팝업 엔티티명을 엮어줍니다.
 action resetStatus parameter ZC_TWBS_RESET_CONFIRM result [1] $self; 
 ```
-## 2.  Behavior Definition(Root) 정의
+## 2. Behavior Definition(Root) 정의
 ```abap
 // 기존: action resetStatus result [1] $self;
 // 변경: 뒤에 parameter 키워드와 함께 1단계에서 만든 팝업 엔티티명을 엮어줍니다.
@@ -42,7 +42,7 @@ action resetStatus result [1] $self;
 use action resetStatus; 
 ```
 ## 4. Abap Class 작성
->
+
 
 - severity = if_abap_behv_message=>severity-success 에 따라 메시지 창이 다름
 

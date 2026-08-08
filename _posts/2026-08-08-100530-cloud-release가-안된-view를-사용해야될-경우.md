@@ -7,17 +7,17 @@ image:
   path: /_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image1.png
 ---
 
-> (주)**> Z**HFB0011 참고
+(주)**> Z** HFB0011 참고
 
 ## 1. 사용자 정의 CDS 뷰 생성
->
+
 
 - 레이블을 입력하면 이름이 자동으로 입력 됨.
 - 외부 API로 생성
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image1.png)
 
->
+
 
 경고창이 뜨는 경우, 무시하고 진행해도 됨.
 
@@ -27,20 +27,20 @@ image:
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image3.png)
 
 ### 3. 사용자 정의 통신 시나리오 생성
->
 
-- **네이밍 패턴:** `YY1_[비즈니스영역]_[목적]`
-- **시나리오 ID** : PRODN_ROUTING_API (Communication Scenario)
-- **내역 ** : 제품 라우팅 API 시나리오
+
+-**네이밍 패턴:**`YY1_[비즈니스영역]_[목적]`
+-**시나리오 ID**: PRODN_ROUTING_API (Communication Scenario)
+-**내역**: 제품 라우팅 API 시나리오
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image4.png)
 
->
+
 
 1. 인바운드 서비스 등록 
 2. 검색 > 사용자 정의 CDS뷰 이름(**ZI_ProdnRoutingOpSubor)** 입력
 3. 저장 > 게시
-※  게 후, [규약생성] 가능
+※ 게 후, [규약생성] 가능
 
 ### 사용자 정의 CDS뷰 검색하면, 앞서 정한 레이블에 접두가 YY1이 붙은 형태로 나옴
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image5.png)
@@ -49,53 +49,53 @@ image:
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image7.png)
 
 ### 4. 규약생성
-> 규약생성을 누르면 자동으로 입력 됨.
+규약생성을 누르면 자동으로 입력 됨.
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image8.png)
 
->
+
 
 1. 통신 시스템 > [신규]
 2. 정보입력
-	1. **시스템 ID:** `YY1_[상대시스템명]_[비즈니스영역]` 또는 `Z_[상대시스템명]_[목적]`
-	2. **시스템 이름:** (시스템 ID와 동일하게 입력하여 식별성 유지)
+	1. **시스템 ID:**`YY1_[상대시스템명]_[비즈니스영역]` 또는 `Z_[상대시스템명]_[목적]`
+	2. **시스템 이름:**(시스템 ID와 동일하게 입력하여 식별성 유지)
 	3. Z_CLD_EXT_BYPASS_API : 클라우드 외부 API 라는 의미로 생성
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image9.png)
 
->
+
 
 1. 일반 > 호스트 이름 : 현재 URL(myXXXXXX.s4hana.cloud.sap)
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image10.png)
 
->
+
 
 1. 인바운드 통신 사용자 등록
 2. [신규 사용자] 등록
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image11.png)
 
->
+
 
 1. 정보입력 후, 생성 (비밀번호 최소 길이: 20자) - ZEXT_BYPASS_USERitm0526!@
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image12.png)
 
->
+
 
 1. 확인
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image13.png)
 
->
+
 
 1. 신규 아웃바운드 사용자 등록 (인바운드 사용자와 동일하게) 후, 저
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image14.png)
 
 ### 5. 통신규약 복귀 후, 앞서 등록한 통신시스템 및 사용자 등록
->
+
 
 1. 등록 후, 서비스 URL/서비스 인터페이스 [복사]
 2. WSDL/서비스 메타데이터 ]다운로드[
@@ -103,7 +103,7 @@ image:
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image15.png)
 
 ### 6. 사용자 정의 통신 시나리오 > 아웃바운드 서비스 등록
->
+
 
 1. 편집 > 추가
 2. 통신규약 인바운드 서비스와 동일한 이름/URL 로 지정
@@ -113,7 +113,7 @@ image:
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image17.png)
 
 ### 7. 통신규약 설정
->
+
 
 1. 아웃바운드 통신 사용자 선택
 2. 아웃바운드 서비스 활성화
@@ -121,10 +121,10 @@ image:
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image18.png)
 
 ### 7. Service Consumption Model (SRVC) 생성
->
 
-1. **New > Business Services > Service Consumption Model**을 생성합니다.
-2. **Remote Consumption Mode** : OData
+
+1. **New > Business Services > Service Consumption Model** 을 생성합니다.
+2. **Remote Consumption Mode**: OData
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image19.png)
 
@@ -149,7 +149,7 @@ define custom entity ZI_PRODNROUTINGOPSUBORD
 }
 ```
 ### 11. Class 생성 
-> ZCL_PRODN_ROUTING_PROVIDER 이름으로 CLASS 생성
+ZCL_PRODN_ROUTING_PROVIDER 이름으로 CLASS 생성
 
 ```javascript
 CLASS zcl_prodn_routing_provider DEFINITION

@@ -16,10 +16,10 @@ SD(Sales & Distribution, 영업/수송)는 견적부터 수주, 출하, 청구(�
 - 신용관리(Credit Management) — 고객 신용한도 체크
 
 ## 핵심 용어
-- **Sales Order(수주)**: 고객의 주문을 등록한 문서 (헤더 VBAK / 항목 VBAP)
-- **Delivery(출하)**: 실제 물류 처리 문서 (헤더 LIKP / 항목 LIPS)
-- **Billing Document(청구서)**: 고객에게 발행하는 인보이스 (헤더 VBRK / 항목 VBRP)
-- **Condition Type(가격조건유형)**: 가격/할인/세금이 어떻게 계산되는지 정의하는 규칙
+-**Sales Order(수주)**: 고객의 주문을 등록한 문서 (헤더 VBAK / 항목 VBAP)
+-**Delivery(출하)**: 실제 물류 처리 문서 (헤더 LIKP / 항목 LIPS)
+-**Billing Document(청구서)**: 고객에게 발행하는 인보이스 (헤더 VBRK / 항목 VBRP)
+-**Condition Type(가격조건유형)**: 가격/할인/세금이 어떻게 계산되는지 정의하는 규칙
 
 ## 개발자 참고
 - 주요 테이블: `VBAK`/`VBAP`(수주), `LIKP`/`LIPS`(출하), `VBRK`/`VBRP`(청구)
