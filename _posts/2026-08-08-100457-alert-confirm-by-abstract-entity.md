@@ -9,6 +9,7 @@ image:
 
 ## 1. 확인 창을 위한 Data definition 정의
 >
+
 - **New > Data Definition**
 - **Name : ZC_TWBS_RESET_CONFIRM**
 
@@ -42,6 +43,7 @@ use action resetStatus;
 ```
 ## 4. Abap Class 작성
 >
+
 - severity = if_abap_behv_message=>severity-success 에 따라 메시지 창이 다름
 
 ### severity-succes

@@ -8,6 +8,7 @@ tags: ["SAP", "개발WIKI"]
 ## 1. RAP의 데이터 결합 방식 개요
 SAP RAP(RESTful ABAP Programming Model)에서 CDS View를 구축할 때 데이터를 결합하는 방식은 크게 전통적인 **SQL Join**과 CDS Core 기능인 **Association** 두 가지로 나뉩니다.
 > **핵심 요약**
+
 - **Join:** 정적(Static) 결합 — 쿼리가 실행되는 시점에 무조건 데이터를 합칩니다.
 - **Association:** 동적(Dynamic) 결합 — 기본 데이터만 먼저 읽고, 하위 데이터는 **실제 요청(On-demand)이 있을 때만** 조인합니다. (성능 최적화에 유리)
 ## 2. SQL Join 종류 및 특징
@@ -97,6 +98,7 @@ define view entity ZI_OrderHeader
 </table>
 ## 5. RAP 개발 시 어떤 것을 선택해야 할까? (Best Practice)
 >
+
 1. **기본 규칙은 Association을 우선 고려합니다.**
 - RAP 기반 비즈니스 객체(BO)를 설계할 때는 Header와 Item 간의 관계를 무조건 `Association` (혹은 `Composition`)으로 엮는 것이 정석입니다.
 2. **이럴 때는 Join을 사용하세요.**

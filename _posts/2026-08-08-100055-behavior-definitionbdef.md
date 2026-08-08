@@ -8,6 +8,7 @@ image:
 ---
 
 >
+
 RAP 아키텍처에서 데이터 조회(Read)는 CDS 뷰가 담당하지만, **데이터의 생성(Create), 수정(Update), 삭제(Delete) 및 비즈니스 로직 제어**는 모두 이 BDEF 파일에서 정의
 - Select(조회)만 하는 경우에는 불필요
 - **CDS View:** 데이터베이스 테이블을 기반으로 화면에 보여줄 필드를 선언 (정적 레이어)
@@ -15,6 +16,7 @@ RAP 아키텍처에서 데이터 조회(Read)는 CDS 뷰가 담당하지만, **�
 - CDS View당 1개만 생성이 가능하다
 ## 1. 생성방법
 >
+
 - Data Definition 마우스 우클릭 후,  New > Behabior Definition
 - Root View, Projection View에 따라 Implementation Type 자동으로 결정 됨.
 - Implementation Type : Managed(자동으로 CUD 생성)
@@ -32,6 +34,7 @@ RAP 아키텍처에서 데이터 조회(Read)는 CDS 뷰가 담당하지만, **�
 
 ## 2. 실행 모드 및 규칙 선언
 >
+
 - **managed:** 개발자가 실제 복잡한 INSERT/UPDATE SQL 문을 직접 쓰지 않고, SAP 표준 RAP 엔진이 persistent table(`ZTWBS_TASK2`)에 데이터를 자동으로 저장하고 관리하도록 위임하는 방식입니다.
 - **strict ( 2 ):** RAP 프레임워크의 최신 구문 규칙과 보안 표준을 엄격하게 검사하겠다는 선언입니다. 최신 버전 개발 시 필수 표준입니다.
 - **with draft:** Fiori 화면에서 사용자가 데이터를 입력하다가 중간에 팅기거나 임시 저장을 누를 수 있도록 '드래프트(Draft)' 기능을 활성화합니다.
@@ -45,6 +48,7 @@ with draft;
 ```
 ## 3. 오브젝트 제어 및 동시성 관리
 >
+
 - **persistent table:** 최종 승인된 데이터가 실제로 저장될 물리 데이터베이스 테이블입니다.
 - **draft table:** 사용자가 입력 중인 임시 데이터가 보관될 '섀도우 테이블',  물리 테이블과 똑같은 구조로 생성되어 있습니다.
 - **lock master / etag master:** 여러 사용자가 동시에 동일한 데이터를 수정할 때 데이터가 꼬이는 것을 막아주는 동시성 제어(Concurrency Control) 메커니즘입니다. 최종 변경 시간(`LastChangedAt`)을 기준으로 락을 관리합니다.
@@ -176,6 +180,7 @@ authorization master( global )
 
 ## 4. 필드 속성 정리(Field Properties)
 >
+
 - **numbering : managed:** 개발자가 Key 값을 수동으로 따주는 로직을 짜지 않아도, 시스템이 데이터를 저장할 때 32자리 UUID(Universally Unique Identifier) 유일키를 자동으로 채번하여 입력해 줍니다.
 - **readonly:** 시스템 관리 필드(생성자, 생성일시 등)는 사용자가 화면에서 직접 수정할 수 없도록 '읽기 전용'으로 잠급니다. `strict ( 2 )` 환경에서는 RAP 엔진이 이 필드들에 자동으로 세션 정보를 매핑합니다.
 - **readonly : update:** 이미 만들어진 데이터를 수정(Update)하는 시점에는 변경되어서는 안 되는 기본 키(`ProgKey`)를 수정 불가능하게 막아줍니다.
@@ -186,6 +191,7 @@ field ( readonly : update ) ProgKey;
 ```
 ## 5. Standard Action 및 Draft Life cycle
 >
+
 - **create; update; delete; : **선언하는 것만으로 Fiori Elements 화면에 <br>                                               신규 생성, 수정, 삭제 버튼이 표준 기능으로 즉시 활성화
 - **draft action ...:** 드래프트 기능을 켰을 때 필수적으로 요구되는 프레임워크 표준 동작들입니다.
 - **Activate(저장):** 임시 저장 테이블(`ZTWBS_TASK2_D`)에 있던 데이터를 검증한 뒤 실제 운영 테이블(`ZTWBS_TASK2`)로 이관(확정 저장)합니다.
@@ -223,12 +229,14 @@ draft determine action Prepare;
 
 ## 6. Non-Standard Action
 >
+
 - Create/Read/Update/Delete 이외에, Action을 의미하며, 대표적으로 "상태 변경"이 있음.
 - Update로도 가능하지만,Validation Check등 추가 로직수행으로 리소스 낭비가 발생.
 > **(instance) action (가장 많이 씀):** 스마트 테이블에서 **체크박스로 특정 행(Record)을 하나 이상 선택해야만** 상단 툴바의 버튼이 활성화되는 구조입니다. <br>(예: 3번 작업 선택 -> [승인] 클릭 -> 3번 데이터 상태 변경)
 > - **static action:** 테이블에서 아무것도 선택하지 않아도 **언제나 활성화되어 있는 버튼**입니다. (예: [전체 마감], [연도별 마이그레이션 실행] 등 시스템 전역 배치성 작업)
 > - **factory action:** 기존 복잡한 데이터를 템플릿 삼아 복사 생성할 때 사용. 테이블에서 특정 행을 잡고 버튼을 누르면, 백엔드가 그 데이터를 기반으로 **새로운 Create 신규 Draft 창** 생성<br>(예: [전월 전표 복사 생성])
 > - **internal action:** Fiori UI 화면에 버튼으로 절대 노출하지 않음. 백엔드 내부의 다른 Validation이나 Determination 로직 안에서 **프로그램 코드로만 호출하여 내부 모듈화용**으로 사용
+
 #### 6-1. 액션 생성
 ```abap
 determination setDefaultValues on modify{ create; }
@@ -240,6 +248,7 @@ determination setDefaultValues on modify{ create; }
 
 ## 7. 데이터 매핑 (Mapping For)
 >
+
 - **mapping for:** ABAP 데이터베이스 테이블의 컬럼명은 전통적으로 소문자/스네이크 표기법(`PROG_KEY`)을 사용합니다. 반면, 최신 CDS 뷰나 프론트엔드 환경에서는 CamelCase(`ProgKey`)를 선언하여 사용합니다.
 - 이 구문은 **백엔드 물리 테이블 컬럼명과 CDS 뷰 필드명을 1:1로 매핑**하여 데이터가 엇갈리지 않고 정상적으로 입출력되도록 중재하는 허브 역할을 합니다.
 -
@@ -254,6 +263,7 @@ mapping for ZTWBS_TASK2 corresponding extensible
 ```
 ## 8. Projection View Behavior Definition
 > 전체소스
+
 ```abap
 projection implementation in class ZBP_C_TWBS_TASK2 unique;
 strict ( 2 );

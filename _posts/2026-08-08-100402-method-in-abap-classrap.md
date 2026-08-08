@@ -7,6 +7,7 @@ tags: ["SAP", "개발WIKI"]
 
 ## 1. DETERMINATION (값 자동 채우기 및 계산)
 > **Java Spring 매칭:** JPA의 `@PrePersist`, `@PreUpdate` 또는 프런트엔드의 `onChange` 이벤트 리스너
+
 ### ① `FOR DETERMINE ON MODIFY`
 - **발동 시점:** 사용자가 화면에서 특정 필드 값을 변경하고 엔터를 치거나 포커스를 이동하는 즉시 (실시간)
 - **주요 용도:** 사용자의 입력에 반응하여 다른 필드의 값을 실시간으로 계산하고 화면에 즉시 동기화할 때 사용합니다.
@@ -56,6 +57,7 @@ ENDMETHOD.
 ```
 ## 2. VALIDATION (데이터 무결성 검증)
 > **Java Spring 매칭:** Spring Boot Validation (`@Valid`, `@NotNull`) 및 Custom Validator
+
 ### ③ `FOR VALIDATE ON SAVE`
 - **발동 시점:** 사용자가 [저장(Save)] 버튼을 누른 직후 (Determination 완료 후 DB 커밋 직전)
 - **주요 용도:** 비즈니스 규칙에 어긋나는 데이터가 DB에 들어가지 못하도록 철저하게 검증합니다. 실패 시 **트랜잭션을 롤백하고 저장을 원천 차단**합니다.
@@ -95,6 +97,7 @@ ENDMETHOD.
 ```
 ## 3. FEATURE CONTROL (화면 동적 제어)
 > **Java Spring 매칭:** UI Dynamic Attribute/State Control (프런트엔드 권한/상태별 Button Disabled 처리)
+
 ### ④ `FOR INSTANCE FEATURES`
 - **발동 시점:** 화면이 로딩되거나, 테이블의 데이터 행(Instance)을 사용자가 클릭하여 선택할 때마다 실시간 발동
 - **주요 용도:** 데이터의 현재 '상태(Status)'에 따라 화면의 버튼을 동적으로 활성화/비활성화하거나, 특정 필드를 읽기 전용(`Read-Only`)으로 잠급니다.
@@ -121,6 +124,7 @@ ENDMETHOD.
 ```
 ## 4. ACTION (커스텀 비즈니스 메서드)
 > **Java Spring 매칭:** Spring REST Controller의 커스텀 `@PostMapping("/tasks/{id}/complete")` API 엔드포인트
+
 ### ⑤ `FOR ACTION` (일반 또는 Static)
 - **발동 시점:** 사용자가 UI 화면 툴바에 배치된 커스텀 버튼을 클릭했을 때 트리거
 - **주요 용도:** 단순 CRUD(등록/수정/삭제) 외에 비즈니스적으로 무언가 프로세스를 처리하고 상태를 변경하는 핵심 비즈니스 함수를 구동합니다.
@@ -154,6 +158,7 @@ ENDMETHOD.
 ```
 ## 5. AUTHORIZATION (보안 권한 체크)
 > **Java Spring 매칭:** Spring Security의 `@PreAuthorize("hasRole('ROLE_ADMIN')")` 또는 접근 제어 인터셉터
+
 ### ⑥ `FOR INSTANCE AUTHORIZATION`
 - **발동 시점:** 사용자가 데이터를 조회, 수정, 삭제하거나 액션 버튼을 누르기 직전 백엔드 게이트웨이에서 가동
 - **주요 용도:** 현재 로그인한 유저의 권한 오브젝트(`AUTHORITY-CHECK`)를 검사하여 행 단위로 데이터 접근 권한을 완벽하게 통제합니다.
