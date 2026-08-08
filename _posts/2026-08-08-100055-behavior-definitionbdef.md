@@ -76,7 +76,7 @@ authorization master( global )
 
 #### LOCK 상세 내용
 
-> 💡 ## 1. ETag Master vs Lock Master 개념 비교
+> ## 1. ETag Master vs Lock Master 개념 비교
 > 두 기능의 핵심적인 차이점을 한눈에 파악할 수 있도록 노션(Notion)에 붙여넣기 좋은 표 형식으로 정리해 드립니다.
 > <table header-row="true" header-column="true">
 > <tr>
@@ -134,7 +134,7 @@ authorization master( global )
 
 #### authorization 상세 내용
 
-> 💡 <table header-row="true" header-column="true">
+> <table header-row="true" header-column="true">
 > <colgroup>
 > <col width="74">
 > <col width="246">
@@ -207,14 +207,14 @@ draft determine action Prepare;
 #### optimized를 사용하는 이유(Fiori UI 저장 클릭 시나리오)
 
 > Optimized 미사용
-> 💡 1단계: Prepare (값 계산 및 유효성 검사 수행 ── > 통과!)
+> 1단계: Prepare (값 계산 및 유효성 검사 수행 ── > 통과!)
 > - 2단계: Activate (저장 시작)
 > - 🔄 [재검증 루프] ABAP 서버가 데이터를 한 건씩 다시 꺼냄
 > -  1번 ~ N번 레코드: 진짜 오류 없는지 또 검사...(시간 소요)
 > - 3단계: 건별 이관 (ABAP 서버가 DB에 한 줄씩 INSERT 명령)
 > - [완료] 마스터 테이블 반영 및 드래프트 삭제
 > Optimized 사용
-> 💡 1단계: Prepare (값 계산 및 유효성 검사 수행 ── > 통과! 데이터 무결함 확정)
+> 1단계: Prepare (값 계산 및 유효성 검사 수행 ── > 통과! 데이터 무결함 확정)
 > - 2단계: Activate optimized (최적화 저장 시작) : 이미 검증됐으므로 다시 검사하지 않음.
 > - 3단계: 고속 집합 이관 (HANA DB 레벨 복사)
 > -  [드래프트 테이블] ════════════════════> [마스터 테이블]
@@ -225,7 +225,7 @@ draft determine action Prepare;
 >
 - Create/Read/Update/Delete 이외에, Action을 의미하며, 대표적으로 "상태 변경"이 있음.
 - Update로도 가능하지만,Validation Check등 추가 로직수행으로 리소스 낭비가 발생.
-> 💡 **(instance) action (가장 많이 씀):** 스마트 테이블에서 **체크박스로 특정 행(Record)을 하나 이상 선택해야만** 상단 툴바의 버튼이 활성화되는 구조입니다. <br>(예: 3번 작업 선택 -> [승인] 클릭 -> 3번 데이터 상태 변경)
+> **(instance) action (가장 많이 씀):** 스마트 테이블에서 **체크박스로 특정 행(Record)을 하나 이상 선택해야만** 상단 툴바의 버튼이 활성화되는 구조입니다. <br>(예: 3번 작업 선택 -> [승인] 클릭 -> 3번 데이터 상태 변경)
 > - **static action:** 테이블에서 아무것도 선택하지 않아도 **언제나 활성화되어 있는 버튼**입니다. (예: [전체 마감], [연도별 마이그레이션 실행] 등 시스템 전역 배치성 작업)
 > - **factory action:** 기존 복잡한 데이터를 템플릿 삼아 복사 생성할 때 사용. 테이블에서 특정 행을 잡고 버튼을 누르면, 백엔드가 그 데이터를 기반으로 **새로운 Create 신규 Draft 창** 생성<br>(예: [전월 전표 복사 생성])
 > - **internal action:** Fiori UI 화면에 버튼으로 절대 노출하지 않음. 백엔드 내부의 다른 Validation이나 Determination 로직 안에서 **프로그램 코드로만 호출하여 내부 모듈화용**으로 사용
@@ -279,7 +279,7 @@ use etag
 
 #### 상세설명(기본 생성된 소스로 충분함 : Root 뷰 설정 상속)
 
-> 💡 ### 1. `projection implementation in class ZBP_C_TWBS_TASK2 unique;`
+> ### 1. `projection implementation in class ZBP_C_TWBS_TASK2 unique;`
 > - **역할:** 프로젝션 레이어 전용 행위 구현 클래스(Behavior Implementation Class)를 지정합니다.
 > - **상세 설명:** 본질적으로 프로젝션 뷰는 기저 레이어(`ZR_`)의 로직을 그대로 재사용(`use`)하지만, UI 소비 레이어 단계에서만 필요한 추가적인 커스텀 액션이나 기능 제어가 있을 수 있습니다. 그때 사용할 비즈니스 로직 클래스를 `ZBP_C_TWBS_TASK2`로 정의하는 것입니다. `unique` 키워드는 이 행위 정의를 구현할 클래스가 시스템 내에서 오직 이 클래스 하나뿐임을 보장합니다.
 > ### 2. `strict ( 2 );`

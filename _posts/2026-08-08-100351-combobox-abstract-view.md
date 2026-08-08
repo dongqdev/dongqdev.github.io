@@ -32,7 +32,7 @@ define table zwbs_dummy {
 @Metadata.ignorePropagatedAnnotations: true
 @ObjectModel.resultSet.sizeCategory: #XS 
 
-/* 💡 [글로벌 표준 안착] 직접 만든 zwbs_dummy를 소스로 지정합니다.
+/* [글로벌 표준 안착] 직접 만든 zwbs_dummy를 소스로 지정합니다.
      where 조건절 없이도 'Y' 1줄, 'N' 1줄이 중복 없이 완벽하게 생성됩니다.
 */
 define view entity ZC_TWBS_YN_VIRTUAL

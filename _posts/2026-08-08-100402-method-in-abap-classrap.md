@@ -131,7 +131,7 @@ ABAP
 METHOD completeTask FOR ACTION
     IMPORTING keys FOR ACTION WbsTask~completeTask RESULT result.
 
-  " 💡 [Action 핵심] 비즈니스 명령을 받아 내부 필드 상태를 완전히 업데이트함
+  " [Action 핵심] 비즈니스 명령을 받아 내부 필드 상태를 완전히 업데이트함
   MODIFY ENTITIES OF zr_twbs_task2 IN LOCAL MODE
     ENTITY WbsTask
       UPDATE FIELDS ( Status )

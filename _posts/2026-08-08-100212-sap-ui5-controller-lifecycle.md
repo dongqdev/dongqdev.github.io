@@ -8,7 +8,7 @@ tags: ["SAP", "Fiori"]
 대부분의 SPA(Single Page Application) Framework는 각 컴포넌트의 생성부터 소멸까지를 관리하는 생명주기(Lifecycle)를 가지고 있습니다.
 SAP UI5 역시 SPA Framework에 해당하며, 코어 아키텍처에 따라 아래와 같은 **Controller 메서드 생명주기**를 따릅니다. 상황과 목적에 맞게 적절한 훅(Hook) 메서드를 활용해야 합니다.
 ## 0. 생명주기 흐름 한눈에 보기
-> 💡 1. **`onInit()`** (뷰 생성 및 초기화)
+> 1. **`onInit()`** (뷰 생성 및 초기화)
 > 2. **`onBeforeRendering()`** (렌더링 직전 인터셉트)
 > 3. **`onAfterRendering()`** (화면 그리기 완료 후 DOM 접근 가능)
 > 4. **`onExit()`** (뷰 파괴 및 자원 해제)
