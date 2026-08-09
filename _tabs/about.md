@@ -2,7 +2,7 @@
 layout: page
 title: About Me
 icon: fas fa-info-circle
-order: 4
+order: 5
 ---
 
 # 이동규 (Donggyu Lee)
