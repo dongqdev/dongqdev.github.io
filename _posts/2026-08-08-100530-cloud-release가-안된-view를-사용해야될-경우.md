@@ -135,6 +135,7 @@ image:
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image21.png)
 
 ### 10. Custom Entity 생성
+
 ```javascript
 @EndUserText.label: '공정 하위 작업 외부 API 매핑 엔티티'
 @ObjectModel.query.implementedBy: 'ZCL_PRODN_ROUTING_PROVIDER'
@@ -148,6 +149,7 @@ define custom entity ZI_PRODNROUTINGOPSUBORD
   Plant : abap.char(4);
 }
 ```
+
 ### 11. Class 생성 
 ZCL_PRODN_ROUTING_PROVIDER 이름으로 CLASS 생성
 

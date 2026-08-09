@@ -14,6 +14,7 @@ image:
 - **Name : ZC_TWBS_RESET_CONFIRM**
 
 ### 소스코드
+
 ```abap
 @EndUserText.label: '초기화 작업 확인 팝업'
 define abstract entity ZC_TWBS_RESET_CONFIRM
@@ -26,21 +27,27 @@ define abstract entity ZC_TWBS_RESET_CONFIRM
 ```
 
 ## 2. Behavior Definition 정의
+
 ```abap
 // 기존: action resetStatus result [1] $self;
 // 변경: 뒤에 parameter 키워드와 함께 1단계에서 만든 팝업 엔티티명을 엮어줍니다.
 action resetStatus parameter ZC_TWBS_RESET_CONFIRM result [1] $self; 
 ```
+
 ## 2. Behavior Definition(Root) 정의
+
 ```abap
 // 기존: action resetStatus result [1] $self;
 // 변경: 뒤에 parameter 키워드와 함께 1단계에서 만든 팝업 엔티티명을 엮어줍니다.
 action resetStatus result [1] $self; 
 ```
+
 ## 3. Behavior Definition(Projection) 정의
+
 ```abap
 use action resetStatus; 
 ```
+
 ## 4. Abap Class 작성
 
 
@@ -95,7 +102,9 @@ METHOD resetStatus.
     ENDIF.
   ENDMETHOD.
 ```
+
 ## 5. Metadata Extention 작성
+
 ```abap
 @EndUserText.label: '프로그램 UUID' // 한글 컬럼명 적용
 @UI.selectionField: [ { position: 10 } ]

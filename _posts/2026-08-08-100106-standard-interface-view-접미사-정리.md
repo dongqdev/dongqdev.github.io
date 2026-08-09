@@ -8,6 +8,7 @@ tags: ["SAP", "RAP"]
 ---
 # 1. `I_PRODNROUTINGOPSUBORDOPDEX` 상세 해부
 이 객체는 SAP S/4HANA (2023 SPS04 이상 버전) PP(생산관리) 모듈의 표준 CDS 뷰로, 명칭은 다음과 같이 결합하여 구성된 형식입니다.
+
 | 약어 | 풀네임 (Full Name) | 설명 |
 | --- | --- | --- |
 | **`I_`** | **Interface View** | VDM의 가장 표준적인 재사용 가능 데이터 모델 레이어 (인터페이스 뷰) |
@@ -17,10 +18,12 @@ tags: ["SAP", "RAP"]
 | **`SUBORD`** | **Subordinate** | 하위 / 종속된 |
 | **`OP`** | **Operation** | 공정 (작업 단계) |
 | **`DEX`** | **Data Extraction** | 데이터 추출용 (BW, Datasphere, GCP 등 외부 연동 목적) |
+
 - **종합 의미: ** 생산 라우팅의 **하위 공정(Subordinate Operation)** 에 대해 **데이터 추출(Data Extraction)이 가능하도록 설계된 표준 인터페이스 CDS 뷰** 입니다.
 ---
 # 2. SAP CDS VDM 아키텍처 흐름도
 각 접두사와 접미사가 실제 개발 아키텍처에서 어떤 레이어에 위치하며 어떤 목적으로 사용되는지 보여주는 흐름도입니다.
+
 ```mermaid
 graph TD
     subgraph SAP_DB [SAP S/4HANA 데이터베이스]
@@ -64,9 +67,11 @@ graph TD
     class SAP_DB,VDM_LAYER,CONS_LAYER,CONS_TARGET layer;
     class DB db;
 ```
+
 ---
 # 3. SAP CDS View 명명 규칙 가이드
 ## 📌 1. 대표적인 접두사 (Prefix) 규칙.
+
 | 접두사 | 정식 명칭 | 설명 | 비고 |
 | --- | --- | --- | --- |
 | **`I_`** | **Interface View** | 데이터 모델의 기초(Basic) 및 합성(Composite) 뷰입니다. 테이블을 직접 조회하거나 조인하여 비즈니스 엔터티화한 **재사용 가능 핵심 레이어** 입니다. | 표준 SAP 제공 |
@@ -75,9 +80,11 @@ graph TD
 | **`P_`** | **Private View** | SAP 내부 로직용 뷰이거나 파라미터 전달 목적의 뷰입니다. 외부에서 참조하거나 직접 확장하는 것이 권장되지 않습니다. | SAP 내부 전용 |
 | **`A_`** | **Remote API View** | 외부 시스템 연동을 위해 노출(Expose)하기 위한 전용 API CDS 뷰입니다. | 외부 연동용 |
 | **`Z`**/**`Y`** | **Custom Namespace** | C_ 또는 I_ 뒤에 붙어서 개발자 정의(CBO) 오브젝트임을 명시합니다. (예: `ZI_SalesOrder`, `ZC_SalesOrder`) | **CBO 개발 시 필수** |
+
 ---
 ## 📌 2. 대표적인 접미사 (Suffix) 규칙
 CDS 뷰에 특수한 비즈니스 기능(Value Help, 트랜잭션, 데이터 분석 등)을 부여할 때 이름 끝에 붙이는 규칙입니다.
+
 | 접미사 | 정식 명칭 | 용도 및 설명 |
 | --- | --- | --- |
 | **`_VH`** | **Value Help** | Fiori 화면 등에서 돋보기 버튼을 눌렀을 때 나오는 **값 도움말(F04 Search Help) 목록** 을 제공하는 전용 뷰입니다. |
@@ -87,4 +94,5 @@ CDS 뷰에 특수한 비즈니스 기능(Value Help, 트랜잭션, 데이터 분
 | **`_Cube`** | **Analytical Cube** | 다차원 분석 보고서의 소스가 되는 집계 대상 데이터를 들고 있는 분석용 큐브(Cube) 뷰입니다. |
 | **`_Query`**(또는 **`_Q`**) | **Analytical Query** | 다차원 분석 화면(예: Fiori Design Studio)에서 최종적으로 사용자에게 보고서 형태로 출력되는 쿼리 뷰입니다. |
 | **`_Std`** | **Standard** | 공통 기준 정보나 세팅 값을 제공하는 마스터 기준 뷰입니다 |
+
 ---

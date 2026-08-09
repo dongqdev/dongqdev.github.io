@@ -14,6 +14,7 @@ tags: ["SAP", "RAP"]
 2. 생성한 서브 패키지 우클릭 ➡️ `New` ➡️ `Database Table` 클릭
 3. 테이블 이름(예: `ZTLUNCH_STATS`)을 입력하고 아래 표준 스펙 코드를 복사·붙여넣기 한 후 **`Ctrl + F3`**(Activate)** 합니다.
 ABAP(주석은 제거!)
+
 ```plain text
 @EndUserText.label : '점심 메뉴 통계 테이블'
 @AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
@@ -40,6 +41,7 @@ define table ztlunch_stats {
 
 }
 ```
+
 ## ⚡ STEP 2. RAP Generator 가동 (`OData UI 서비스`)
 테이블 생성이 끝났다면 이제 마법사를 소환해서 3초 만에 화면 파이프라인을 구축합니다.
 ### 1. 제너레이터 소환

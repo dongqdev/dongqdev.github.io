@@ -38,6 +38,7 @@ RAP 아키텍처에서 데이터 조회(Read)는 CDS 뷰가 담당하지만, **�
 - **managed:** 개발자가 실제 복잡한 INSERT/UPDATE SQL 문을 직접 쓰지 않고, SAP 표준 RAP 엔진이 persistent table(`ZTWBS_TASK2`)에 데이터를 자동으로 저장하고 관리하도록 위임하는 방식입니다.
 - **strict ( 2 ):** RAP 프레임워크의 최신 구문 규칙과 보안 표준을 엄격하게 검사하겠다는 선언입니다. 최신 버전 개발 시 필수 표준입니다.
 - **with draft:** Fiori 화면에서 사용자가 데이터를 입력하다가 중간에 팅기거나 임시 저장을 누를 수 있도록 '드래프트(Draft)' 기능을 활성화합니다.
+
 ```javascript
 managed implementation in class ZBP_R_TWBS_TASK2 unique;
 // ZBP_R_TWBS_TASK2 에 마우스오버, Ctrl + 1 입력 > Create behavior implementation class..
@@ -46,12 +47,14 @@ strict ( 2 );
 // 엄격한 룰에 의해 작성. 시스템 안정성 확보.
 with draft;
 ```
+
 ## 3. 오브젝트 제어 및 동시성 관리
 
 
 - **persistent table:** 최종 승인된 데이터가 실제로 저장될 물리 데이터베이스 테이블입니다.
 - **draft table:** 사용자가 입력 중인 임시 데이터가 보관될 '섀도우 테이블', 물리 테이블과 똑같은 구조로 생성되어 있습니다.
 - **lock master / etag master:** 여러 사용자가 동시에 동일한 데이터를 수정할 때 데이터가 꼬이는 것을 막아주는 동시성 제어(Concurrency Control) 메커니즘입니다. 최종 변경 시간(`LastChangedAt`)을 기준으로 락을 관리합니다.
+
 ```javascript
 persistent table ZTWBS_TASK2
 
@@ -82,6 +85,7 @@ authorization master( global )
 
 ## 1. ETag Master vs Lock Master 개념 비교
 두 기능의 핵심적인 차이점을 한눈에 파악할 수 있도록 노션(Notion)에 붙여넣기 좋은 표 형식으로 정리해 드립니다.
+
 | **비교 항목** | **ETag Master (낙관적 동시제어)** | **Lock Master (비관적/배타적 동시제어)** |
 | --- | --- | --- |
 | **제어 철학** | "데이터가 동시에 수정되는 일은 **흔치 않을 것** 이다." | "데이터가 동시에 수정되어 충돌이 **무조건 날 것** 이다." |
@@ -90,6 +94,7 @@ authorization master( global )
 | **충돌 발생 시** | 나중에 저장을 누른 사용자에게 에러 팝업을 띄움 | 먼저 진입한 사용자가 나갈 때까지 다른 사용자는 수정 불가 |
 | **시스템 부하** | DB 조회가 일어날 뿐이므로 **부하가 매우 적음** | 서버 메모리에 잠금 세션을 유지하므로 **부하가 상대적으로 큼** |
 | **추천 사용 처** | 마스터 테이블, 트래픽이 낮거나 충돌 빈도가 적은 데이터 | 재고 수량 관리, 주문 처리, 동시 수정이 치명적인 핵심 트랜잭션 |
+
 ## 2. 작동 프로세스로 보는 차이점 (시나리오)
 A와 B라는 두 명의 사용자가 동시에 1번 데이터(WBS 태스크)를 수정하려고 화면에 접근한 상황을 가정해 보겠습니다.
 ### A. ETag Master가 적용된 경우 (낙관적 제어)
@@ -129,11 +134,13 @@ A와 B라는 두 명의 사용자가 동시에 1번 데이터(WBS 태스크)를 
 - **numbering : managed:** 개발자가 Key 값을 수동으로 따주는 로직을 짜지 않아도, 시스템이 데이터를 저장할 때 32자리 UUID(Universally Unique Identifier) 유일키를 자동으로 채번하여 입력해 줍니다.
 - **readonly:** 시스템 관리 필드(생성자, 생성일시 등)는 사용자가 화면에서 직접 수정할 수 없도록 '읽기 전용'으로 잠급니다. `strict ( 2 )` 환경에서는 RAP 엔진이 이 필드들에 자동으로 세션 정보를 매핑합니다.
 - **readonly : update:** 이미 만들어진 데이터를 수정(Update)하는 시점에는 변경되어서는 안 되는 기본 키(`ProgKey`)를 수정 불가능하게 막아줍니다.
+
 ```javascript
 field ( numbering : managed ) ProgKey;
 field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt;
 field ( readonly : update ) ProgKey;
 ```
+
 ## 5. Standard Action 및 Draft Life cycle
 
 
@@ -144,6 +151,7 @@ field ( readonly : update ) ProgKey;
 - **Edit(수정):** 기존 데이터를 고치기 위해 임시 저장 세션을 엽니다.
 - **Resume(세션재개/이어쓰기):** 기존 데이터를 고치기 위해 임시 저장 세션을 엽니다.
 - **Prepare(중간검증):** 저장(`Activate`) 직전에 데이터에 오류가 없는지 백엔드의 모든 Determination(자동 계산) 및 Validation(값 검증) 로직을 일괄 트리거하여 준비하는 전처리 단계<br>
+
 ```abap
 create; update; delete;
 
@@ -183,6 +191,7 @@ Optimized 사용
 - **internal action: ** Fiori UI 화면에 버튼으로 절대 노출하지 않음. 백엔드 내부의 다른 Validation이나 Determination 로직 안에서 **프로그램 코드로만 호출하여 내부 모듈화용** 으로 사용
 
 #### 6-1. 액션 생성
+
 ```abap
 determination setDefaultValues on modify{ create; }
 // 데이터가 저장/수정될 때(on modify) 두 필드의 값을 결정하겠다는 determination 구문을 선언
@@ -197,6 +206,7 @@ determination setDefaultValues on modify{ create; }
 - **mapping for:** ABAP 데이터베이스 테이블의 컬럼명은 전통적으로 소문자/스네이크 표기법(`PROG_KEY`)을 사용합니다. 반면, 최신 CDS 뷰나 프론트엔드 환경에서는 CamelCase(`ProgKey`)를 선언하여 사용합니다.
 - 이 구문은 **백엔드 물리 테이블 컬럼명과 CDS 뷰 필드명을 1:1로 매핑** 하여 데이터가 엇갈리지 않고 정상적으로 입출력되도록 중재하는 허브 역할을 합니다.
 -
+
 ```javascript
 mapping for ZTWBS_TASK2 corresponding extensible
 {
@@ -206,6 +216,7 @@ mapping for ZTWBS_TASK2 corresponding extensible
   ...
 }
 ```
+
 ## 8. Projection View Behavior Definition
 전체소스
 
