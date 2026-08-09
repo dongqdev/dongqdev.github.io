@@ -10,8 +10,8 @@ image:
 ## 1. 확인 창을 위한 Data definition 정의
 
 
--**New > Data Definition**
--**Name : ZC_TWBS_RESET_CONFIRM**
+- **New > Data Definition**
+- **Name : ZC_TWBS_RESET_CONFIRM**
 
 ### 소스코드
 ```abap

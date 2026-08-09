@@ -9,41 +9,20 @@ tags: ["SAP", "개발WIKI"]
 SAP RAP(RESTful ABAP Programming Model)에서 CDS View를 구축할 때 데이터를 결합하는 방식은 크게 전통적인 **SQL Join** 과 CDS Core 기능인 **Association** 두 가지로 나뉩니다.
 **핵심 요약**
 
--**Join:** 정적(Static) 결합 — 쿼리가 실행되는 시점에 무조건 데이터를 합칩니다.
--**Association: ** 동적(Dynamic) 결합 — 기본 데이터만 먼저 읽고, 하위 데이터는 **실제 요청(On-demand)이 있을 때만** 조인합니다. (성능 최적화에 유리)
+- **Join:** 정적(Static) 결합 — 쿼리가 실행되는 시점에 무조건 데이터를 합칩니다.
+- **Association: ** 동적(Dynamic) 결합 — 기본 데이터만 먼저 읽고, 하위 데이터는 **실제 요청(On-demand)이 있을 때만** 조인합니다. (성능 최적화에 유리)
 ## 2. SQL Join 종류 및 특징
 RAP의 CDS View 내에서도 표준 SQL Join을 그대로 사용할 수 있습니다.
 ### 📊 Join 종류별 비교 테이블
-<table markdown="1">
-<tr>
-<td>**Join 종류**</td>
-<td>**노션 아이콘**</td>
-<td>**설명**</td>
-<td>**매칭 실패 시 결과**</td>
-</tr>
-<tr>
-<td>**Inner Join**</td>
-<td>🤝</td>
-<td>양쪽 테이블에 모두 조건이 일치하는 데이터만 반환</td>
-<td>결과에서 제외됨</td>
-</tr>
-<tr>
-<td>**Left Outer Join**</td>
-<td>👈</td>
-<td>왼쪽(가져올 주체) 테이블의 모든 데이터 + 오른쪽의 일치하는 데이터</td>
-<td>오른쪽 테이블 내용은 `NULL`로 채워짐</td>
-</tr>
-<tr>
-<td>**Right Outer Join**</td>
-<td>👉</td>
-<td>오른쪽 테이블의 모든 데이터 + 왼쪽의 일치하는 데이터</td>
-<td>왼쪽 테이블 내용은 `NULL`로 채워짐</td>
-</tr>
-</table>
+| **Join 종류** | **노션 아이콘** | **설명** | **매칭 실패 시 결과** |
+| --- | --- | --- | --- |
+| **Inner Join** | 🤝 | 양쪽 테이블에 모두 조건이 일치하는 데이터만 반환 | 결과에서 제외됨 |
+| **Left Outer Join** | 👈 | 왼쪽(가져올 주체) 테이블의 모든 데이터 + 오른쪽의 일치하는 데이터 | 오른쪽 테이블 내용은 `NULL`로 채워짐 |
+| **Right Outer Join** | 👉 | 오른쪽 테이블의 모든 데이터 + 왼쪽의 일치하는 데이터 | 왼쪽 테이블 내용은 `NULL`로 채워짐 |
 ### 📌 Join 사용 시 주의사항 (토글)
 ### 클릭하여 내용 펼치기
--**성능 부담:** Join된 테이블이 많고 데이터가 방대할 경우, 사용하지 않는 필드까지 모두 조인하므로 DB와 네트워크에 부하가 걸립니다.
--**1:N 관계의 주의점:** 1:N 관계의 테이블을 Join하면 중심 테이블의 Row가 중복되어 늘어나는 현상이 발생합니다.
+- **성능 부담:** Join된 테이블이 많고 데이터가 방대할 경우, 사용하지 않는 필드까지 모두 조인하므로 DB와 네트워크에 부하가 걸립니다.
+- **1:N 관계의 주의점:** 1:N 관계의 테이블을 Join하면 중심 테이블의 Row가 중복되어 늘어나는 현상이 발생합니다.
 ## 3. Association (RAP의 핵심 기능)
 Association은 데이터 모델 간의 **관계(Relationship) 정의** 에 집중하는 CDS View의 강력한 기능입니다.
 ### 🔄 Association의 핵심 메커니즘: Lazy Loading (간접 조인)
@@ -64,38 +43,13 @@ define view entity ZI_OrderHeader
 ```
 ## 4. [핵심 비교] Join vs Association
 노션에서 한눈에 비교할 수 있는 종합 대조표입니다.
-<table header-row="true" header-column="true" markdown="1">
-<tr>
-<td>**비교 항목**</td>
-<td>**SQL Join (Inner / Left Outer)**</td>
-<td>**Association**</td>
-</tr>
-<tr>
-<td>**결합 시점**</td>
-<td>**정적 (Static)**<br>쿼리 실행 시 항상 즉시 결합</td>
-<td>**동적 (Dynamic)**<br>데이터가 필요한 시점에 결합 (Lazy Loading)</td>
-</tr>
-<tr>
-<td>**성능 (Performance)**</td>
-<td>불필요한 필드까지 항상 읽어오므로 상대적으로 무거움</td>
-<td>최초 조회 시 메인 테이블만 읽으므로 가볍고 빠름</td>
-</tr>
-<tr>
-<td>**OData / UI 활용**</td>
-<td>단순 플랫(Flat)한 구조 출력에 적합</td>
-<td>Fiori Elements의 **Navigation Path** 및 대량 데이터 처리에 필수적</td>
-</tr>
-<tr>
-<td>**카디널리티 (관계성)**</td>
-<td>명시하지 않음 (조인 조건만 기술)</td>
-<td>`[1..1]`, `[0..*]` 등 데이터 관계를 명확히 선언</td>
-</tr>
-<tr>
-<td>**재사용성**</td>
-<td>해당 쿼리 내부에서만 일회성으로 결합됨</td>
-<td>한 번 정의해 두면 다른 CDS나 비즈니스 로직에서 자유롭게 타고 들어감 (Reuse 가능)</td>
-</tr>
-</table>
+| **비교 항목** | **SQL Join (Inner / Left Outer)** | **Association** |
+| --- | --- | --- |
+| **결합 시점** | **정적 (Static)**<br>쿼리 실행 시 항상 즉시 결합 | **동적 (Dynamic)**<br>데이터가 필요한 시점에 결합 (Lazy Loading) |
+| **성능 (Performance)** | 불필요한 필드까지 항상 읽어오므로 상대적으로 무거움 | 최초 조회 시 메인 테이블만 읽으므로 가볍고 빠름 |
+| **OData / UI 활용** | 단순 플랫(Flat)한 구조 출력에 적합 | Fiori Elements의 **Navigation Path** 및 대량 데이터 처리에 필수적 |
+| **카디널리티 (관계성)** | 명시하지 않음 (조인 조건만 기술) | `[1..1]`, `[0..*]` 등 데이터 관계를 명확히 선언 |
+| **재사용성** | 해당 쿼리 내부에서만 일회성으로 결합됨 | 한 번 정의해 두면 다른 CDS나 비즈니스 로직에서 자유롭게 타고 들어감 (Reuse 가능) |
 ## 5. RAP 개발 시 어떤 것을 선택해야 할까? (Best Practice)
 
 

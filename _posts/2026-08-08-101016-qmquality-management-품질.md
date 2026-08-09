@@ -15,10 +15,10 @@ QM(Quality Management, 품질)은 원자재 입고부터 완제품 출하까지 
 - 사용결정(Usage Decision) — 합격/불합격 최종 판정
 
 ## 핵심 용어
--**Inspection Lot(검사로트)**: 검사 대상이 되는 수량 단위 (예: 이번에 입고된 자재 100개)
--**Usage Decision(사용결정)**: 검사로트를 합격/불합격 처리하는 최종 판정 액션
--**Quality Notification(품질통지)**: 불량이나 클레임이 발생했을 때 등록하는 문서
--**Inspection Plan(검사계획)**: 무엇을, 어떻게 검사할지 정의한 기준
+- **Inspection Lot(검사로트)**: 검사 대상이 되는 수량 단위 (예: 이번에 입고된 자재 100개)
+- **Usage Decision(사용결정)**: 검사로트를 합격/불합격 처리하는 최종 판정 액션
+- **Quality Notification(품질통지)**: 불량이나 클레임이 발생했을 때 등록하는 문서
+- **Inspection Plan(검사계획)**: 무엇을, 어떻게 검사할지 정의한 기준
 
 ## 개발자 참고
 - 주요 테이블: `QALS`(검사로트), `QMEL`(품질통지)

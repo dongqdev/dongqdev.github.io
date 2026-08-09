@@ -29,9 +29,9 @@ image:
 ### 3. 사용자 정의 통신 시나리오 생성
 
 
--**네이밍 패턴:**`YY1_[비즈니스영역]_[목적]`
--**시나리오 ID**: PRODN_ROUTING_API (Communication Scenario)
--**내역**: 제품 라우팅 API 시나리오
+- **네이밍 패턴:**`YY1_[비즈니스영역]_[목적]`
+- **시나리오 ID**: PRODN_ROUTING_API (Communication Scenario)
+- **내역**: 제품 라우팅 API 시나리오
 
 ![관련 이미지](/_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image4.png)
 

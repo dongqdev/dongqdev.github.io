@@ -44,19 +44,19 @@ define table ztlunch_stats {
 테이블 생성이 끝났다면 이제 마법사를 소환해서 3초 만에 화면 파이프라인을 구축합니다.
 ### 1. 제너레이터 소환
 - 방금 만든 서브 패키지 폴더 우클릭 ➡️ `New` ➡️ `Other...` 클릭
--**`Generate ABAP Repository Objects`** 검색 후 더블클릭
+- **`Generate ABAP Repository Objects`** 검색 후 더블클릭
 - ⚠️**\[중요\]** 반드시 **`OData UI 서비스`**(밑에서 2번째)를 선택하고 `Next`
 ### 2. 1단계: General (기본 정보 설정)
--**`Referenced Object`**: ** STEP 1에서 만든 물리 테이블명 입력 (예: `ZTLUNCH_STATS`)
--**`Project Name`**: ** 외부 노출용 API 명칭 입력 (뒤에 화면용임을 뜻하는 `_UI` 명시) ➡️ 예: `ZRE_LUNCH_STATS_UI`
--**`Artifacts Prefix`**: ** 뒤에서 네이밍이 꼬이는 것을 방지하기 위해**`비워둠(Blank)`** 또는 **`Z`** 를 제외한 특정 접두사** 입력 권장.
+- **`Referenced Object`**: ** STEP 1에서 만든 물리 테이블명 입력 (예: `ZTLUNCH_STATS`)
+- **`Project Name`**: ** 외부 노출용 API 명칭 입력 (뒤에 화면용임을 뜻하는 `_UI` 명시) ➡️ 예: `ZRE_LUNCH_STATS_UI`
+- **`Artifacts Prefix`**: ** 뒤에서 네이밍이 꼬이는 것을 방지하기 위해**`비워둠(Blank)`** 또는 **`Z`** 를 제외한 특정 접두사** 입력 권장.
 ### 3. 2단계: Data Model & Behavior (Core 레이어 네이밍 교정)
 - 메뉴 트리에서 `Data Model`, `Behavior`를 순서대로 클릭하며 우측 입력창의 **`ZZ_`** 나 **`ZZP_`** 로 중복 꼬인 접두사들을 싹 지우고 표준 이름으로 교정 **합니다.
--**`CDS Entity Name`**:**`ZR_LUNCH_STATS` (5단계 원장 뷰)
--**`Implementation Class`**:**`ZBP_R_LUNCH_STATS` (원장 서비스 로직 클래스)
+- **`CDS Entity Name`**:**`ZR_LUNCH_STATS` (5단계 원장 뷰)
+- **`Implementation Class`**:**`ZBP_R_LUNCH_STATS` (원장 서비스 로직 클래스)
 ### 4. 3단계: Service Projection (화면 DTO 레이어 네이밍 교정)
 - 메뉴 트리에서 `Service Projection`을 클릭합니다.
--**`Projection Entity Name`**:**`ZP_LUNCH_STATS` (6단계 화면용 뷰) 또는 표준 규칙에 따라 `ZC_LUNCH_STATS`로 명명 조치합니다.
+- **`Projection Entity Name`**:**`ZP_LUNCH_STATS` (6단계 화면용 뷰) 또는 표준 규칙에 따라 `ZC_LUNCH_STATS`로 명명 조치합니다.
 ### 5. 4단계: 마무리 및 발행
 - 모든 세팅이 끝나면 `Next`를 눌러 에러가 없는지 확인하고 `Finish`를 때립니다.
 ## 🔥 STEP 3. 전체 컴파일 및 Fiori Preview 확인

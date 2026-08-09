@@ -16,10 +16,10 @@ HR(Human Resource, 인사, SAP 내부에서는 HCM이라고도 부릅니다)은 
 - 채용(Recruiting)
 
 ## 핵심 용어
--**Personnel Number(사번, PERNR)**: 직원 한 명을 식별하는 고유 번호
--**Infotype(인포타입)**: 인사정보를 담는 데이터 구조 단위 (예: 개인정보는 0002번 Infotype)
--**Organizational Unit(조직단위)**: 부서/팀 같은 조직 구조의 노드
--**Position(직위)**: 조직 안에서 사람이 채워지는 자리(포지션) 단위
+- **Personnel Number(사번, PERNR)**: 직원 한 명을 식별하는 고유 번호
+- **Infotype(인포타입)**: 인사정보를 담는 데이터 구조 단위 (예: 개인정보는 0002번 Infotype)
+- **Organizational Unit(조직단위)**: 부서/팀 같은 조직 구조의 노드
+- **Position(직위)**: 조직 안에서 사람이 채워지는 자리(포지션) 단위
 
 ## 개발자 참고
 - 주요 테이블: `PA0001`(조직배치 Infotype), `PA0002`(개인정보 Infotype)
