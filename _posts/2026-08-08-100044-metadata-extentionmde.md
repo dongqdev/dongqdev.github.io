@@ -4,7 +4,7 @@ date: 2026-08-08 05:14:02 +0900
 categories: ["DEV", "SAP-RAP"]
 tags: ["SAP", "RAP"]
 image:
-  path: /_images/20260808/2026-08-08-100044-metadata-extentionmde_image1.png
+  path: ../_images/20260808/2026-08-08-100044-metadata-extentionmde_image1.png
 ---
 
 
@@ -28,7 +28,7 @@ image:
 | **`#PARTNER`** | **파트너사 개발 계층.** SAP 툴을 커스텀하여 납품하는 협력사/파트너사 아키텍처용 레이어입니다. |
 | **`#CUSTOMER`** | **최상위 레이어 (실무 표준). ** 실제 프로젝트를 진행하는 **고객사 개발자(나)가 커스텀할 때 사용하는 계층** 입니다. 표준이나 파트너사 설정을 무시하고 내가 셋팅한 UI가 화면에 1순위로 최종 반영됩니다. |
 
-### @UI.headerInfo.\[속성\]
+### @UI.headerInfo.[속성]
 
 ```javascript
 @UI.headerInfo: {
@@ -109,7 +109,7 @@ annotate view ZP_LDG_FLIGHT with {
 }
 ```
 
-![관련 이미지](/_images/20260808/2026-08-08-100044-metadata-extentionmde_image1.png)
+![관련 이미지](../_images/20260808/2026-08-08-100044-metadata-extentionmde_image1.png)
 <empty-block/>
 ## ※ 기타
 ### 프로그래스바

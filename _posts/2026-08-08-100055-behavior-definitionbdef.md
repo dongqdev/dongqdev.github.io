@@ -4,7 +4,7 @@ date: 2026-08-08 05:14:12 +0900
 categories: ["DEV", "SAP-RAP"]
 tags: ["SAP", "RAP"]
 image:
-  path: /_images/20260808/2026-08-08-100055-behavior-definitionbdef_image1.png
+  path: ../_images/20260808/2026-08-08-100055-behavior-definitionbdef_image1.png
 ---
 
 
@@ -23,12 +23,12 @@ RAP 아키텍처에서 데이터 조회(Read)는 CDS 뷰가 담당하지만, **�
 
 
 
-![관련 이미지](/_images/20260808/2026-08-08-100055-behavior-definitionbdef_image1.png)
+![관련 이미지](../_images/20260808/2026-08-08-100055-behavior-definitionbdef_image1.png)
 
 
 
 
-![관련 이미지](/_images/20260808/2026-08-08-100055-behavior-definitionbdef_image2.png)
+![관련 이미지](../_images/20260808/2026-08-08-100055-behavior-definitionbdef_image2.png)
 
 
 
@@ -123,10 +123,10 @@ A와 B라는 두 명의 사용자가 동시에 1번 데이터(WBS 태스크)를 
 
 
 
-![관련 이미지](/_images/20260808/2026-08-08-100055-behavior-definitionbdef_image3.png)
+![관련 이미지](../_images/20260808/2026-08-08-100055-behavior-definitionbdef_image3.png)
 
 
-![관련 이미지](/_images/20260808/2026-08-08-100055-behavior-definitionbdef_image4.png)
+![관련 이미지](../_images/20260808/2026-08-08-100055-behavior-definitionbdef_image4.png)
 
 ## 4. 필드 속성 정리(Field Properties)
 
@@ -198,7 +198,7 @@ determination setDefaultValues on modify{ create; }
 // 선언 후, ctrl + 1 입력하여 class 생성
 ```
 
-![관련 이미지](/_images/20260808/2026-08-08-100055-behavior-definitionbdef_image5.png)
+![관련 이미지](../_images/20260808/2026-08-08-100055-behavior-definitionbdef_image5.png)
 
 ## 7. 데이터 매핑 (Mapping For)
 
