@@ -12,6 +12,7 @@ image:
 - **활성화 조건: ** MDE를 적용할 대상 프로젝션 뷰(`ZP_...` 또는 `ZC_...`) 상단에**`@Metadata.allowExtensions: true`** 어노테이션이 선언 필수
 - **소스코드 분리 (Clean Code):** CDS 뷰 안에 `@UI.lineItem`, `@UI.facet` 같은 화면 제어 코드가 수백 줄씩 섞이면 백엔드 쿼리를 알아보기 힘들어집니다. 이를 UI 전용 파일로 격리시켜 CDS 뷰를 깔끔하게 유지
 - **영역별 협업 최적화:** 백엔드 개발자가 CDS 뷰 데이터 구조를 바꾸지 않아도, UI 담당자나 프론트엔드 개발자가 MDE 파일만 수정하여 화면 레이아웃(필터바 순서, 테이블 컬럼명 등)을 자유롭게 변경할 수 있습니다.
+
 ## 1. 상단 Annotation
 ### @Metadata.layer
 
@@ -110,7 +111,8 @@ annotate view ZP_LDG_FLIGHT with {
 ```
 
 ![관련 이미지](../_images/20260808/2026-08-08-100044-metadata-extentionmde_image1.png)
-<empty-block/>
+
+
 ## ※ 기타
 ### 프로그래스바
 
