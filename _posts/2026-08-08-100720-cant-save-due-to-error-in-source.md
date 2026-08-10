@@ -7,4 +7,4 @@ tags: ["SAP", "VII 오류조치"]
 
 
 
-- Database Table : @Semantics.quantity, amount 등 단위/화폐 설정 必
+> **Database Table : @Semantics.quantity, amount 등 단위/화폐 설정 必**
