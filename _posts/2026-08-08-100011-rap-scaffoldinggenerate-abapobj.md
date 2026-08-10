@@ -14,7 +14,7 @@ tags: ["SAP", "RAP"]
 2. 생성한 서브 패키지 우클릭 ➡️ `New` ➡️ `Database Table` 클릭
 3. 테이블 이름(예: `ZTLUNCH_STATS`)을 입력하고 아래 표준 스펙 코드를 복사·붙여넣기 한 후 **`Ctrl + F3`**(Activate)** 합니다.
 
-```ABAP
+```javascript
 @EndUserText.label : '점심 메뉴 통계 테이블'
 @AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
 @AbapCatalog.tableCategory : #TRANSPARENT
