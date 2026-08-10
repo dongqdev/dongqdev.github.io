@@ -1,7 +1,7 @@
 ---
 title: "QM(Quality Management-품질)"
 date: 2026-08-08 05:22:42 +0900
-categories: ["SAP-모듈"]
+categories: ["DEV", "SAP-모듈"]
 tags: ["SAP", "QM"]
 ---
 

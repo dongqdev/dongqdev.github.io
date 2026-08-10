@@ -1,7 +1,7 @@
 ---
 title: "SAP UI5 Controller Lifecycle"
 date: 2026-08-08 05:15:22 +0900
-categories: ["SAP-FIORI"]
+categories: ["DEV", "SAP-FIORI"]
 tags: ["SAP", "Fiori"]
 ---
 

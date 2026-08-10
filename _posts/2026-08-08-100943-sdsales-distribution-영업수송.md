@@ -1,7 +1,7 @@
 ---
 title: "SD(Sales & Distribution-영업/수송)"
 date: 2026-08-08 05:22:12 +0900
-categories: ["SAP-모듈"]
+categories: ["DEV", "SAP-모듈"]
 tags: ["SAP", "SD"]
 ---
 

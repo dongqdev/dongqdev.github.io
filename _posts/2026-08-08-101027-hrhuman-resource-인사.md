@@ -1,7 +1,7 @@
 ---
 title: "HR(Human Resource-인사)"
 date: 2026-08-08 05:22:52 +0900
-categories: ["SAP-모듈"]
+categories: ["DEV", "SAP-모듈"]
 tags: ["SAP", "HR"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "RAP Scaffolding(Generate AbapObj)"
 date: 2026-08-08 05:13:32 +0900
-categories: ["SAP-RAP"]
+categories: ["DEV", "SAP-RAP"]
 tags: ["SAP", "RAP"]
 ---
 

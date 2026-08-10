@@ -1,7 +1,7 @@
 ---
 title: "Cloud Release가 안된 View를 사용해야될 경우"
 date: 2026-08-08 05:18:22 +0900
-categories: ["SAP-WIKI"]
+categories: ["DEV", "SAP-WIKI"]
 tags: ["SAP", "개발WIKI"]
 image:
   path: /_images/20260808/2026-08-08-100530-cloud-release가-안된-view를-사용해야될-경우_image1.png

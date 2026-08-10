@@ -1,7 +1,7 @@
 ---
 title: "⭐ ABAP Runtime error 'RAISE_SHORTDUMP’ 확인 방법"
 date: 2026-08-08 05:19:22 +0900
-categories: ["SAP-오류조치"]
+categories: ["DEV", "SAP-오류조치"]
 tags: ["SAP", "VII 오류조치"]
 image:
   path: /_images/20260808/2026-08-08-100636-abap-runtime-error-raiseshortdump-확인-방법_image1.png

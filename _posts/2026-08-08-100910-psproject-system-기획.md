@@ -1,7 +1,7 @@
 ---
 title: "PS(Project System-기획)"
 date: 2026-08-08 05:21:42 +0900
-categories: ["SAP-모듈"]
+categories: ["DEV", "SAP-모듈"]
 tags: ["SAP", "PS"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "MM(Material Management-구매/자재관리)"
 date: 2026-08-08 05:22:22 +0900
-categories: ["SAP-모듈"]
+categories: ["DEV", "SAP-모듈"]
 tags: ["SAP", "MM"]
 ---
 
