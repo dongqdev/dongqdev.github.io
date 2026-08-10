@@ -33,7 +33,7 @@ Association은 데이터 모델 간의 **관계(Relationship) 정의** 에 집�
 - 엔티티를 정의할 때는 조인을 맺지 않고, 데이터 관계성(Cardinality)만 정의해 둡니다.
 - OData 서비스나 UI에서 해당 하위 엔티티로 네비게이션(Navigation)을 가거나 필드를 명시적으로 호출할 때, 그 순간 내부적으로 `Left Outer Join`이 실행됩니다.
 
-```ABAP
+```abap
 // CDS View에서의 Association 선언 예시
 define view entity ZI_OrderHeader
   as select from zorder_h

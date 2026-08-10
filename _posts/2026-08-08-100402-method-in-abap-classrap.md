@@ -14,7 +14,7 @@ tags: ["SAP", "개발WIKI"]
 - **주요 용도:** 사용자의 입력에 반응하여 다른 필드의 값을 실시간으로 계산하고 화면에 즉시 동기화할 때 사용합니다.
 - **비즈니스 예시:** 품목 수량(`Quantity`)이나 단가(`UnitPrice`)가 변경되었을 때, 총금액(`TotalPrice = 수량 * 단가`)을 즉시 계산하여 화면에 보여줌.
 
-```ABAP
+```abap
 METHOD calculateTotalPrice FOR DETERMINE ON MODIFY
     IMPORTING keys FOR WbsTask~Quantity. " 수량 필드가 변경될 때 트리거
 
@@ -42,7 +42,7 @@ ENDMETHOD.
 - **주요 용도:** 사용자가 직접 입력하지 않는 시스템 필드, 생성 로그, 또는 최종 마스터 일련번호를 백엔드에서 묵묵히 채워줄 때 사용합니다.
 - **비즈니스 예시:** 데이터가 생성되는 순간, 현재 시스템 시간과 로그인한 유저 ID를 생성자/생성일시 필드에 자동으로 주입함.
 
-```ABAP
+```abap
 METHOD setCreationLog FOR DETERMINE ON SAVE
     IMPORTING keys FOR WbsTask~setCreationLog. " 저장 시점에 트리거
 
@@ -68,7 +68,7 @@ ENDMETHOD.
 - **주요 용도: ** 비즈니스 규칙에 어긋나는 데이터가 DB에 들어가지 못하도록 철저하게 검증합니다. 실패 시 **트랜잭션을 롤백하고 저장을 원천 차단** 합니다.
 - **비즈니스 예시:** 프로젝트 '종료 날짜'가 '시작 날짜'보다 과거일 경우 저장 에러를 뿜으며 화면에 빨간색 경고창을 띄움.
 
-```ABAP
+```abap
 METHOD validateDates FOR VALIDATE ON SAVE
     IMPORTING keys FOR WbsTask~validateDates.
 
@@ -109,7 +109,7 @@ ENDMETHOD.
 - **주요 용도:** 데이터의 현재 '상태(Status)'에 따라 화면의 버튼을 동적으로 활성화/비활성화하거나, 특정 필드를 읽기 전용(`Read-Only`)으로 잠급니다.
 - **비즈니스 예시:** 해당 작업의 상태가 이미 '완료(Completed)'인 행을 선택하면, 상단의 [작업 완료 처리] 버튼을 비활성화(`Disabled`) 시킴.
 
-```ABAP
+```abap
 METHOD get_instance_features.
   " 1. 해당 행의 현재 상태값 읽기
   READ ENTITIES OF zr_twbs_task2 IN LOCAL MODE
@@ -137,7 +137,7 @@ ENDMETHOD.
 - **주요 용도:** 단순 CRUD(등록/수정/삭제) 외에 비즈니스적으로 무언가 프로세스를 처리하고 상태를 변경하는 핵심 비즈니스 함수를 구동합니다.
 - **비즈니스 예시:**[작업 완료 처리] 버튼을 누르면 내부적으로 상태 필드를 'C'로 바꾸고 결재 프로세스를 태움. 혹은 [카테고리 추가] 팝업창을 열어 마스터 테이블에 독립 인서트를 수행함.
 
-```ABAP
+```abap
 METHOD completeTask FOR ACTION
     IMPORTING keys FOR ACTION WbsTask~completeTask RESULT result.
 
@@ -172,7 +172,7 @@ ENDMETHOD.
 - **주요 용도:** 현재 로그인한 유저의 권한 오브젝트(`AUTHORITY-CHECK`)를 검사하여 행 단위로 데이터 접근 권한을 완벽하게 통제합니다.
 - **비즈니스 예시:** 영업 부서 사원은 타 부서(인사, 재무)의 프로젝트 데이터를 수정하거나 삭제할 수 없도록 차단함.
 
-```ABAP
+```abap
 METHOD check Authorization FOR INSTANCE AUTHORIZATION
     IMPORTING
       keys       FOR WbsTask~AUTHORIZATION
