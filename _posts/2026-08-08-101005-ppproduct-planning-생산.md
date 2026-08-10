@@ -1,7 +1,7 @@
 ---
 title: "PP(Product Planning-생산)"
 date: 2026-08-08 05:22:32 +0900
-categories: ["SAP-모듈"]
+categories: ["DEV", "SAP-모듈"]
 tags: ["SAP", "PP"]
 ---
 

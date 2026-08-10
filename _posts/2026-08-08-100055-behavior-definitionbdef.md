@@ -1,7 +1,7 @@
 ---
 title: "Behavior Definition(BDEF)"
 date: 2026-08-08 05:14:12 +0900
-categories: ["SAP-RAP"]
+categories: ["DEV", "SAP-RAP"]
 tags: ["SAP", "RAP"]
 image:
   path: ../_images/20260808/2026-08-08-100055-behavior-definitionbdef_image1.png

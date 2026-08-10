@@ -1,7 +1,7 @@
 ---
 title: "TR(Transport Request) 란"
 date: 2026-08-08 05:18:02 +0900
-categories: ["SAP-WIKI"]
+categories: ["DEV", "SAP-WIKI"]
 tags: ["SAP", "개발WIKI"]
 ---
 

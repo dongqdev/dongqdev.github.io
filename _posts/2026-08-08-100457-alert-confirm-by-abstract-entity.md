@@ -1,7 +1,7 @@
 ---
 title: "Alert/Confirm by Abstract Entity"
 date: 2026-08-08 05:17:52 +0900
-categories: ["SAP-WIKI"]
+categories: ["DEV", "SAP-WIKI"]
 tags: ["SAP", "개발WIKI"]
 image:
   path: ../_images/20260808/2026-08-08-100457-alert-confirm-by-abstract-entity_image1.png

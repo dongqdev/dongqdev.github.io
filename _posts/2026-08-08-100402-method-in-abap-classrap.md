@@ -1,7 +1,7 @@
 ---
 title: "METHOD IN ABAP CLASS(RAP)"
 date: 2026-08-08 05:17:02 +0900
-categories: ["SAP-WIKI"]
+categories: ["DEV", "SAP-WIKI"]
 tags: ["SAP", "개발WIKI"]
 ---
 

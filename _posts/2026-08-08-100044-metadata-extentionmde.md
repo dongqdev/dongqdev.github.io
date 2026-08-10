@@ -1,7 +1,7 @@
 ---
 title: "Metadata Extention(MDE)"
 date: 2026-08-08 05:14:02 +0900
-categories: ["SAP-RAP"]
+categories: ["DEV", "SAP-RAP"]
 tags: ["SAP", "RAP"]
 image:
   path: ../_images/20260808/2026-08-08-100044-metadata-extentionmde_image1.png

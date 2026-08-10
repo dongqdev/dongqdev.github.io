@@ -1,7 +1,7 @@
 ---
 title: "Changes to object are only allowed in correction/repair"
 date: 2026-08-08 05:20:12 +0900
-categories: ["SAP-오류조치"]
+categories: ["DEV", "SAP-오류조치"]
 tags: ["SAP", "VII 오류조치"]
 image:
   path: ../_images/20260808/2026-08-08-100731-changes-to-object-are-only-allowed-in-correction-r_image1.png

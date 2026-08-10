@@ -1,7 +1,7 @@
 ---
 title: "Standard Interface View 접미사 정리"
 date: 2026-08-08 05:14:22 +0900
-categories: ["SAP-RAP"]
+categories: ["DEV", "SAP-RAP"]
 tags: ["SAP", "RAP"]
 ---
 
