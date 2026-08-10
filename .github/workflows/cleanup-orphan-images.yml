@@ -1,0 +1,31 @@
+name: Cleanup Orphan Images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "_posts/**"
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Remove images no longer referenced by any post
+        run: bash scripts/cleanup_orphan_images.sh --force
+
+      - name: Commit changes if any
+        run: |
+          if [ -n "$(git status --porcelain -- _images)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add _images
+            git commit -m "chore: 참조되지 않는 고아 이미지 자동 정리"
+            git push
+          else
+            echo "정리할 고아 이미지가 없습니다."
+          fi
