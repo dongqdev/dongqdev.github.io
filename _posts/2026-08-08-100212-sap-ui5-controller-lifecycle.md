@@ -21,7 +21,7 @@ SAP UI5 역시 SPA Framework에 해당하며, 코어 아키텍처에 따라 아�
 onInit: function(){
     // 뷰 초기화 및 모델 바인딩 로직 구현
 }
-```
+`````
 
 ### 2. onBeforeRendering
 - **설명:** XML View가 브라우저에 **렌더링(화면 생성)되기 직전** 에 매번 실행되는 함수입니다.
@@ -47,7 +47,7 @@ onAfterRendering: function(){
 - **설명:** XML View가 파괴되거나 **화면을 완전히 떠날 때(Destroy) 실행** 되는 소멸자 함수입니다.
 - **용도:** 라우팅(Routing)을 통해 다른 뷰로 이동하면서 현재 뷰가 메모리에서 해제될 때, 메모리 누수(Leak)를 방지하기 위해 생성했던 이벤트를 제거하거나 자원을 초기화(Clean-up)합니다.
 
-```plain text
+```javascript
 onExit: function(){
     // 자원 해제 및 인스턴스 초기화
 }
