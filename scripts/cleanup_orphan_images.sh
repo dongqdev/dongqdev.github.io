@@ -7,7 +7,17 @@
 #   ./scripts/cleanup_orphan_images.sh --force  # 실제로 삭제
 #
 # 삭제 여부 판단 기준: 이미지 경로(예: /_images/20260808/foo_image1.png)가
-# 어떤 _posts/*.md 파일에도 문자열로 등장하지 않으면 고아로 간주합니다.
+# 어떤 _posts/*.md 파일에도 문자열로 등장하지 않으면 1차로 "고아 후보"로 봅니다.
+#
+# 주의: blog-bot은 PUBLISH_TARGET=naver(네이버 전용 발행)일 때 _images만 커밋하고
+# _posts 글은 아예 만들지 않습니다(push_images_only, 커밋 메시지"chore: 발행용
+# 이미지 추가" 고정). 이런 이미지는 _posts에서 영원히 참조되지 않는 게 "정상"이며,
+# 네이버 쪽에서 지금도 쓰고 있을 수 있어 자동 삭제하면 안 됩니다. 그래서 고아 후보
+# 중에서도 "그 이미지를 처음 추가한 커밋 메시지가 저 문구인 경우"는 보호 대상으로
+# 제외합니다. (반대로 "docs: auto post ...", "docs: sync ..." 등 _posts와 함께
+# 커밋됐던 이미지가 지금 고아라면, 그건 나중에 게시물 자체가 지워진 경우이므로
+# 안전하게 삭제 대상입니다.)
+NAVER_ONLY_COMMIT_MSG="chore: 발행용 이미지 추가"
 
 set -euo pipefail
 
@@ -25,6 +35,7 @@ if [[ ! -d _images || ! -d _posts ]]; then
 fi
 
 orphans=()
+protected=()
 
 while IFS= read -r -d '' img; do
   # _images/20260808/foo.png -> /_images/20260808/foo.png (마크다운/프론트매터에서 쓰는 형태)
@@ -36,8 +47,21 @@ while IFS= read -r -d '' img; do
     continue
   fi
 
+  # 이 파일을 최초로 추가한 커밋의 메시지를 확인 (네이버 전용 발행 여부 판별)
+  add_commit_msg="$(git log --diff-filter=A --format='%s' --follow -- "$img" 2>/dev/null | tail -n 1)"
+  if [[ "$add_commit_msg" == "$NAVER_ONLY_COMMIT_MSG" ]]; then
+    protected+=("$img")
+    continue
+  fi
+
   orphans+=("$img")
 done < <(find _images -type f -print0)
+
+if [[ ${#protected[@]} -gt 0 ]]; then
+  echo "네이버 전용 발행으로 보이는 이미지 ${#protected[@]}개는 보호 대상이라 건너뜁니다:"
+  printf '  %s\n' "${protected[@]}"
+  echo
+fi
 
 if [[ ${#orphans[@]} -eq 0 ]]; then
   echo "고아 이미지가 없습니다. 정리할 게 없습니다."
