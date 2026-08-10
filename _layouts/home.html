@@ -117,14 +117,6 @@ layout: default
                   </span>
                 {% endif %}
 
-                <!-- pageviews -->
-                {% if site.pageviews.provider and site.analytics[site.pageviews.provider].id %}
-                  <i class="far fa-eye fa-fw me-1"></i>
-                  <em class="pageviews-list" data-path="{{ post.url | relative_url }}">
-                    <i class="fas fa-spinner fa-spin small"></i>
-                  </em>
-                  {{ site.data.locales[lang].post.pageview_measure }}
-                {% endif %}
               </div>
 
               {% if post.pin %}
