@@ -21,7 +21,7 @@ SAP UI5 역시 SPA Framework에 해당하며, 코어 아키텍처에 따라 아�
 onInit: function(){
     // 뷰 초기화 및 모델 바인딩 로직 구현
 }
-`````
+```
 
 ### 2. onBeforeRendering
 - **설명:** XML View가 브라우저에 **렌더링(화면 생성)되기 직전** 에 매번 실행되는 함수입니다.
