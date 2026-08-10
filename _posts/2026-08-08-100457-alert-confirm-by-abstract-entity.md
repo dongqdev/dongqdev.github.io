@@ -4,7 +4,7 @@ date: 2026-08-08 05:17:52 +0900
 categories: ["SAP-WIKI"]
 tags: ["SAP", "개발WIKI"]
 image:
-  path: /_images/20260808/2026-08-08-100457-alert-confirm-by-abstract-entity_image1.png
+  path: ../_images/20260808/2026-08-08-100457-alert-confirm-by-abstract-entity_image1.png
 ---
 
 ## 1. 확인 창을 위한 Data definition 정의
@@ -54,13 +54,13 @@ use action resetStatus;
 - severity = if_abap_behv_message=>severity-success 에 따라 메시지 창이 다름
 
 ### severity-succes
-![관련 이미지](/_images/20260808/2026-08-08-100457-alert-confirm-by-abstract-entity_image1.png)
+![관련 이미지](../_images/20260808/2026-08-08-100457-alert-confirm-by-abstract-entity_image1.png)
 
 ### severity-information
-![관련 이미지](/_images/20260808/2026-08-08-100457-alert-confirm-by-abstract-entity_image2.png)
+![관련 이미지](../_images/20260808/2026-08-08-100457-alert-confirm-by-abstract-entity_image2.png)
 
 ### severity-error
-![관련 이미지](/_images/20260808/2026-08-08-100457-alert-confirm-by-abstract-entity_image3.png)
+![관련 이미지](../_images/20260808/2026-08-08-100457-alert-confirm-by-abstract-entity_image3.png)
 
 ```abap
 METHOD resetStatus.

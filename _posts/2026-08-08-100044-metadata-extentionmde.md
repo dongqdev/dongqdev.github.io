@@ -4,7 +4,7 @@ date: 2026-08-08 05:14:02 +0900
 categories: ["SAP-RAP"]
 tags: ["SAP", "RAP"]
 image:
-  path: /_images/20260808/2026-08-08-100044-metadata-extentionmde_image1.png
+  path: ../_images/20260808/2026-08-08-100044-metadata-extentionmde_image1.png
 ---
 
 
@@ -109,7 +109,7 @@ annotate view ZP_LDG_FLIGHT with {
 }
 ```
 
-![관련 이미지](/_images/20260808/2026-08-08-100044-metadata-extentionmde_image1.png)
+![관련 이미지](../_images/20260808/2026-08-08-100044-metadata-extentionmde_image1.png)
 <empty-block/>
 ## ※ 기타
 ### 프로그래스바
