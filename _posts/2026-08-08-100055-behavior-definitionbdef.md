@@ -162,6 +162,7 @@ draft determine action Prepare;
 <summary>optimized를 사용하는 이유(Fiori UI 저장 클릭 시나리오)</summary>
 
 - Optimized 미사용
+
 ```
 - 1단계: Prepare (값 계산 및 유효성 검사 수행 ── > 통과!)
 - 2단계: Activate (저장 시작)
@@ -172,6 +173,7 @@ draft determine action Prepare;
 ```
 
 - Optimized 사용
+
 ```
 - 1단계: Prepare (값 계산 및 유효성 검사 수행 ── > 통과! 데이터 무결함 확정)
 - 2단계: Activate optimized (최적화 저장 시작) : 이미 검증됐으므로 다시 검사하지 않음.
