@@ -136,6 +136,14 @@ field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt;
 field ( readonly : update ) ProgKey;
 ```
 
+### 개발 참고사항
+- **BDEF 생성 필수 컬럼**: 위 `readonly` 필드들을 매핑하려면, RAP 테이블(DDLS) 설계 시 다음 컬럼이 필수적으로 포함되어야 합니다.
+- `created_by` (생성자)
+- `created_at` (생성일시)
+- `last_changed_by` (최종 수정자)
+- `last_changed_at` (최종 수정일시)
+- **Key 설정**: 모든 테이블의 상단 키는 기본적으로 `key client : abap.clnt not null;`로 설정하여 클라이언트 종속성을 확보해야 합니다.
+
 ## 5. Standard Action 및 Draft Life cycle
 
 
