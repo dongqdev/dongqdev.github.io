@@ -19,7 +19,8 @@ tags: ["SAP", "RAP"]
 | **`OP`** | **Operation** | 공정 (작업 단계) |
 | **`DEX`** | **Data Extraction** | 데이터 추출용 (BW, Datasphere, GCP 등 외부 연동 목적) |
 
-- **종합 의미: ** 생산 라우팅의 **하위 공정(Subordinate Operation)** 에 대해 **데이터 추출(Data Extraction)이 가능하도록 설계된 표준 인터페이스 CDS 뷰** 입니다.
+- **종합 의미:** 생산 라우팅의 **하위 공정(Subordinate Operation)** 에 대해 **데이터 추출(Data Extraction)이 가능하도록 설계된 표준 인터페이스 CDS 뷰** 입니다.
+
 ---
 # 2. SAP CDS VDM 아키텍처 흐름도
 각 접두사와 접미사가 실제 개발 아키텍처에서 어떤 레이어에 위치하며 어떤 목적으로 사용되는지 보여주는 흐름도입니다.
