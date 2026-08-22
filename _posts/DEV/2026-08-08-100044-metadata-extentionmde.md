@@ -137,3 +137,5 @@ annotate view ZP_LDG_FLIGHT with {
   @UI.fieldGroup: [{ qualifier: 'TechInfoFields', position: 90 }] -- 기술 정보 탭 백업용 [cite: 24]
   ProgressString;
 ```
+
+![관련 이미지](../_images/20260808/2026-08-08-100044-metadata-extentionmde_image2.png)
