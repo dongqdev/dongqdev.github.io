@@ -30,3 +30,6 @@ assets/js/dist
 *~
 .DS_Store
 Thumbs.db
+
+# graphify 지식그래프 산출물 — 실행마다 통째로 재생성되는 캐시/그래프라 커밋 대상이 아니다.
+graphify-out/
